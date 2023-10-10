@@ -1,3 +1,5 @@
+package Productos;
+
 public class Laptop extends Computadora{
     
 }
