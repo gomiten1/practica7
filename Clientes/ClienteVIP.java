@@ -13,6 +13,7 @@ public class ClienteVIP extends Comprador{
     void comprarProducto(PC pc){
         this.aniadirCarrito(pc);
     }
+    
     void comprarProducto(Smartphone smartphone){
         this.aniadirCarrito(smartphone);
     }
