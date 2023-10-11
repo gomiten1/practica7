@@ -1,14 +1,15 @@
 package Clientes;
-<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
-=======
-import java.util.*;
->>>>>>> 932e7f0f5051cf0aa2611803f37ddf0543d71159
 
 import Productos.*;
 
 public class Tienda{
+
     public static void main(String[] args) {
+        int i, op, comprarIndice;
         Scanner input = new Scanner(System.in);
         List<Laptop> laptops = new ArrayList<>();
         List<PC> pcs = new ArrayList<>();
@@ -16,6 +17,8 @@ public class Tienda{
         List<Smartphone> smartphones = new ArrayList<>();
         List<Celular> celulares = new ArrayList<>();
         List<Television> televisiones = new ArrayList<>();
+        List<DispositivoElectronico> comprados = new LinkedList<>();
+
 
 
         Laptop laptop1 = new Laptop(1, 999.99, "Dell", "Intel Core i7", "Windows 10", "8 horas");
@@ -50,6 +53,8 @@ public class Tienda{
 
 
 
+
+
         System.out.println("Bienvenido a la tienda");
         System.out.println("1. Cliente VIP");
         System.out.println("2. Socio");
@@ -60,6 +65,7 @@ public class Tienda{
         int tipoCliente = input.nextInt();
 
         System.out.print("Ingrese su nombre: ");
+        input.nextLine();
         String nombre = input.nextLine();
 
         System.out.print("Ingrese su cantidad de dinero: ");
@@ -68,68 +74,187 @@ public class Tienda{
         switch (tipoCliente){
             case 1:
                 System.out.println("CLIENTE VIP");
-                ClienteVIP clienteVip= new ClienteVIP(dinero, nombre);   
+                ClienteVIP clienteVip= new ClienteVIP(dinero, nombre);
                 
-                System.out.println("\nCatalogo");
-                System.out.println("\nPC:");
-                for (PC pc : pcs) {
-                    System.out.println(pc);
+                do {
+                    System.out.println("\nCatalogo");
+                    System.out.println("\nPC:");
+
+                    i = 1;
+                    for (PC pc : pcs) {
+                        System.out.println("#"+i+pc);
+                        i++;
+
+                    }
+
+                    i = 1;
+
+                    System.out.println("\nSmartphones:");
+                    for (Smartphone smartphone : smartphones) {
+                        System.out.println("#"+i+smartphone);
+                        i++;
+                    }
+
+                    System.out.println("\nPara comprar ingresa 1.PC 2.Smartphones 3. Terminar de comprar y pagar");
+                    op = input.nextInt();
+
+                    if(op == 1){
+                        System.out.println("Ingresa el numero de PC a comprar: ");
+                        comprarIndice = input.nextInt();
+                        clienteVip.aniadirCarrito(pcs.remove(comprarIndice-1));
+
+                    }
+                    if(op==2){
+                        System.out.println("Ingresa el numero de Smartphone a comprar: ");
+                        comprarIndice = input.nextInt();
+                        clienteVip.aniadirCarrito(smartphones.remove(comprarIndice-1));
+
+                    }
+                    
+                } while (op != 3);
+
+                comprados = clienteVip.getCarrito();
+
+                System.out.println("Comprado: ");
+
+                for (DispositivoElectronico compra : comprados){
+                    System.out.println(compra);
                 }
 
-                System.out.println("\nSmartphones:");
-                for (Smartphone smartphone : smartphones) {
-                    System.out.println(smartphone);
-                }
+                System.out.println("Tu cambio: " + clienteVip.getDinero());
+
+                
+                
+                
+
             break;
             case 2:
                 System.out.println("SOCIO");               
                 Socio socio = new Socio(dinero, nombre);
-                System.out.println("\nCatalogo");
 
-                System.out.println("\nTelevisiones:");
-                for (Television television : televisiones) {
-                    System.out.println(television);
+                do {
+                    System.out.println("\nCatalogo");
+
+                    i = 1;
+
+                    System.out.println("\nTelevisiones:");
+                    for (Television television : televisiones) {
+                        System.out.println("#"+i+television);
+                        i++;
+                    }
+
+                    i = 1;
+
+                    System.out.println("\nTablets:");
+                    for (Tablet tablet : tablets) {
+                        System.out.println("#"+i+tablet);
+                        i++;
+                    }
+
+                    System.out.println("\nPara comprar ingresa 1.Television 2.Tablet 3. Terminar de comprar y pagar");
+                    op = input.nextInt();
+
+                    if(op == 1){
+                        System.out.println("Ingresa el numero de Television a comprar: ");
+                        comprarIndice = input.nextInt();
+                        socio.aniadirCarrito(televisiones.remove(comprarIndice-1));
+
+                    }
+                    if(op==2){
+                        System.out.println("Ingresa el numero de Tablet a comprar: ");
+                        comprarIndice = input.nextInt();
+                        socio.aniadirCarrito(tablets.remove(comprarIndice-1));
+
+                    }
+
+
+                } while (op != 3);
+
+                comprados = socio.getCarrito();
+
+                System.out.println("Comprado: ");
+
+                for (DispositivoElectronico compra : comprados){
+                    System.out.println(compra);
                 }
 
-                System.out.println("\nTablets:");
-                for (Tablet tablet : tablets) {
-                    System.out.println(tablet);
-                }
+                System.out.println("Tu cambio: " + socio.getDinero());
+                
             break;
 
             case 3:
                 System.out.println("ESTUDIANTE");
                 Estudiante estudiante=  new Estudiante(dinero, nombre);  
-                System.out.println("\nCatalogo");    
+
+                do {
+                    
+                    System.out.println("\nCatalogo");  
+                    
+                    i = 1;
+                    
+                    System.out.println("\nLaptops:");
+                    for (Laptop laptop : laptops) {
+                        System.out.println("#"+i+laptop);
+                        i++;
+                    }
+
+                    i = 1;
+
+                    System.out.println("\nCelulares:");
+                    for (Celular celular : celulares) {
+                        System.out.println("#"+i+celular);
+                        i++;
+                    }
+
+                    System.out.println("\nPara comprar ingresa 1.Laptops 2.Celulares 3. Terminar de comprar y pagar");
+                    op = input.nextInt();
+
+                    if(op == 1){
+                        System.out.println("Ingresa el numero de Laptop a comprar: ");
+                        comprarIndice = input.nextInt();
+                        estudiante.aniadirCarrito(laptops.remove(comprarIndice-1));
+
+                    }
+                    if(op==2){
+                        System.out.println("Ingresa el numero de Celular a comprar: ");
+                        comprarIndice = input.nextInt();
+                        estudiante.aniadirCarrito(celulares.remove(comprarIndice-1));
+
+                    }
+                    
+                } while (op != 3);
+
+                comprados = estudiante.getCarrito();
+
+                System.out.println("Comprado: ");
+
+                for (DispositivoElectronico compra : comprados){
+                    System.out.println(compra);
+                }
+
+                System.out.println("Tu cambio: " + estudiante.getDinero());
                 
-                System.out.println("\nLaptops:");
-                for (Laptop laptop : laptops) {
-                    System.out.println(laptop);
-                }
-
-                System.out.println("\nCelulares:");
-                for (Celular celular : celulares) {
-                    System.out.println(celular);
-                }
-            break;
-
-            case 4:
-                System.out.println("Saliendo...");
             break;
 
             default:
-                System.out.println("Ingrese una opcion valida");
+                System.out.println("Saliendo...");
         }
+
+
 
         
         input.close();
     }
 
-    }
+
+    
+
+}
 
 
 
-    Scanner input = new Scanner(System.in);
+
+  
 
 
     

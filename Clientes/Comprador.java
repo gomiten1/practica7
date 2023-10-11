@@ -5,33 +5,33 @@ import java.util.LinkedList;
 import Productos.DispositivoElectronico;
 
 public class Comprador {
-   private int dinero;
+   private double dinero;
    String nombre;
    private LinkedList<DispositivoElectronico> carrito = new LinkedList<>();
 
    
-   
+   public LinkedList<DispositivoElectronico> getCarrito() {
+      return carrito;
+   }
+
    public Comprador(int dinero, String nombre) {
       this.dinero = dinero;
       this.nombre = nombre;
    }
 
-   int getDinero() {
+   double getDinero() {
       return dinero;
    }
 
-   public void actualizarDinero(int costo){
+   public void actualizarDinero(double costo){
       dinero -= costo;
    }
 
    void aniadirCarrito(DispositivoElectronico producto){
+      this.actualizarDinero(producto.getPrecio());
       carrito.addLast(producto);
    }
    
 
-   
-
-   
-   
    
 }
