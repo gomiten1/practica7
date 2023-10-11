@@ -27,7 +27,7 @@ public class Socio extends Comprador{
         
 
         super.aniadirCarrito(producto);
-        double descuento = producto.getPrecio()*0.7;
+        double descuento = producto.getPrecio()*0.85;
         this.actualizarDinero(-descuento);
         System.out.println("\nComo eres socio, tienes descuento");
     }
