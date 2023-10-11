@@ -9,7 +9,13 @@ public class Socio extends Comprador{
         super(dinero, nombre);
     }
     
-    
+    void comprarProducto(Television television){
+        this.aniadirCarrito(television);
+    }
+
+    void comprarProducto(Tablet tablet){
+        this.aniadirCarrito(tablet);
+    }
 
 
 
