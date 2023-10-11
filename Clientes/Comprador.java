@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 import Productos.DispositivoElectronico;
 
+
+
 public class Comprador {
    private int dinero;
    String nombre;
@@ -20,13 +22,16 @@ public class Comprador {
       return dinero;
    }
 
-   public void comprarProducto(int costo){
+   public void actualizarDinero(int costo){
       dinero -= costo;
    }
 
    void aniadirCarrito(DispositivoElectronico producto){
       carrito.addLast(producto);
    }
+   
+
+   
 
    
    
