@@ -4,8 +4,6 @@ import java.util.LinkedList;
 
 import Productos.DispositivoElectronico;
 
-
-
 public class Comprador {
    private int dinero;
    String nombre;

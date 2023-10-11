@@ -2,9 +2,9 @@ package Productos;
 
 public class Computadora extends DispositivoElectronico{
 
-    private String procesador;
-    private String sistema;
-    private String tipo;
+    String procesador;
+    String sistema;
+    String tipo;
 
     
     public Computadora(int codigo, double precio, String marca, String procesador,String sistema, String tipo ){

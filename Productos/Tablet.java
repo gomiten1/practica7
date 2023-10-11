@@ -10,6 +10,11 @@ public class Tablet extends DispositivoMovil {
 
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", Doble camara: " + (dobleCamara ? "Si" : "No");
+    }
+
     public void mensaje(){
         System.out.println("Soy una Tablet");
     }
