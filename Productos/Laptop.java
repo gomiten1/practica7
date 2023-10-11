@@ -2,7 +2,10 @@ package Productos;
 
 public class Laptop extends Computadora{
 
-    public Laptop(int codigo, double precio, String marca, String procesador, String sistema) {
+    private String bateria;
+    
+
+    public Laptop(int codigo, double precio, String marca, String procesador, String sistema, String bateria) {
         super(codigo, precio, marca, procesador, sistema, "Laptop");
     }
     
